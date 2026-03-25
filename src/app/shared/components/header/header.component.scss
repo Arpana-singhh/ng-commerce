@@ -1,0 +1,66 @@
+@import '../../../styles/mixins';
+
+.app-header {
+  background: #f8f9fb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 0;
+
+  .header-wrapper {
+    @include dispflex(flex, space-between, center);
+  }
+
+  .logo {
+    @include dispflex(flex, flex-start, center);
+    gap: 8px;
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 18px;
+      color: #1f2937;
+    }
+  }
+
+  .header-actions {
+    @include dispflex(flex, flex-end, center);
+    gap: 20px;
+
+    .welcome-text {
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .icon {
+      font-size: 18px;
+      cursor: pointer;
+      @include transition(0.2s);
+
+      &:hover {
+        color: #2563eb;
+      }
+    }
+
+    .logout {
+      @include dispflex(flex, center, center);
+      gap: 6px;
+      cursor: pointer;
+      color: #4b5563;
+
+      i {
+        font-size: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      &:hover {
+        color: #dc2626;
+      }
+    }
+  }
+}

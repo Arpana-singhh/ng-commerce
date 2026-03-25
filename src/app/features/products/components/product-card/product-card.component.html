@@ -1,0 +1,30 @@
+  <div class="product-list">
+    <div class="row">
+
+      <div *ngIf="loading">Loading...</div>
+
+      <div 
+        class="col-lg-4 col-md-6 mb-4"
+        *ngFor="let product of products"
+      >
+        <div class="product-card">
+
+          <img 
+            [src]="product.thumbnail" 
+            class="img-fluid mb-2"
+          />
+
+          <div class="content">
+            <h5>{{ product.title }}</h5>
+            <p class="price">₹ {{ product.price }}</p>
+
+            <button class="btn btn-primary w-100">
+              View Details
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
