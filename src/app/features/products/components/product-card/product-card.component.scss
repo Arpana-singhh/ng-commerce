@@ -1,0 +1,64 @@
+@use '../../../../styles/mixins' as *;
+
+
+.product-list {
+  padding: 20px;
+  background: $bg-light;
+
+  .product-card {
+    background: $white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    height: 100%;
+
+    @include transition(0.3s);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .img-box {
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        @include image-fill;
+      }
+    }
+
+    .content {
+      padding: 15px;
+
+      h5 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: $text-dark;
+        @include text_truncate(2);
+      }
+
+      .price {
+        font-weight: bold;
+        color: $secondary;
+        margin-bottom: 10px;
+      }
+
+      button {
+        @include dispflex(flex, center, center);
+        background: $primary;
+        color: $white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+
+        @include transition(0.2s);
+
+        &:hover {
+          background: $primary-dark;
+        }
+      }
+    }
+  }
+}

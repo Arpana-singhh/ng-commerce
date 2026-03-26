@@ -1,3 +1,15 @@
+$primary: #4F46E5;
+$primary-dark: #4338CA;
+
+$secondary: #F59E0B;
+$secondary-dark: #D97706;
+
+$text-dark: #111827;
+$text-light: #6B7280;
+
+$border-color: #E5E7EB;
+$bg-light: #F9FAFB;
+$white: #ffffff;
 
 @mixin dispflex($displayflex, $justifycontent, $alignitems) {
     display: $displayflex;

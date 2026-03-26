@@ -1,0 +1,19 @@
+<div class="pagination">
+
+  <button 
+    class="nav-btn"
+    [disabled]="currentPage === 1">
+    Prev
+  </button>
+
+  <span class="page-info">
+    {{ currentPage }} / {{ totalPages }}
+  </span>
+
+  <button 
+    class="nav-btn"
+    [disabled]="currentPage === totalPages">
+    Next
+  </button>
+
+</div>

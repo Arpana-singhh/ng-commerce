@@ -1,3 +1,14 @@
 <div class="container">
-<app-product-card></app-product-card>
+  <div class="inner">
+    <div class="ng-comm">
+        <div class="product-filter-box">
+          <input [(ngModel)]="searchText"  placeholder="Search products..." />
+          <button (click)="onSearch()">Search</button>
+        </div>
+        <app-product-card></app-product-card>
+        <div className="pagination">
+          <app-pagination></app-pagination>
+        </div>
+    </div>
+  </div>
 </div>

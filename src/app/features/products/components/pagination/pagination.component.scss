@@ -1,0 +1,36 @@
+
+@use '../../../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.nav-btn {
+  padding: 8px 14px;
+  background: $primary;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  @include transition(0.2s);
+
+  &:hover:not(:disabled) {
+    background: $primary-dark;
+  }
+
+  &:disabled {
+    background: $border-color;
+    cursor: not-allowed;
+    color: $text-light;
+  }
+}
+
+.page-info {
+  font-weight: 500;
+  color: $text-dark;
+}
