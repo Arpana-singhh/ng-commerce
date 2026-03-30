@@ -13,9 +13,11 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<ProductsResponseModel> {
-    return this.http.get<any>(`${this.baseUrl}/products`).pipe(
-      map(res => ProductsResponseModel.fromApi(res))
-    );
-  }
+  getProducts(page: number, limit: number): Observable<ProductsResponseModel> {
+  const skip = (page - 1) * limit;
+
+  return this.http
+    .get<any>(`${this.baseUrl}/products?limit=${limit}&skip=${skip}`)
+    .pipe(map(res => ProductsResponseModel.fromApi(res)));
+}
 }

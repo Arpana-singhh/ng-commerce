@@ -2,6 +2,7 @@
 
   <button 
     class="nav-btn"
+    (click)="goToPrev()"
     [disabled]="currentPage === 1">
     Prev
   </button>
@@ -12,6 +13,7 @@
 
   <button 
     class="nav-btn"
+    (click)="goToNext()"
     [disabled]="currentPage === totalPages">
     Next
   </button>

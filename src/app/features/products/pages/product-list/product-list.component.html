@@ -5,10 +5,21 @@
           <input [(ngModel)]="searchText"  placeholder="Search products..." />
           <button (click)="onSearch()">Search</button>
         </div>
-        <app-product-card></app-product-card>
+
+        <app-product-card 
+          [products]="products" 
+          [loading]="loading">
+        </app-product-card>
+
         <div className="pagination">
-          <app-pagination></app-pagination>
+          <app-pagination  
+            [total]="total"
+            [limit]="limit"
+            [currentPage]="currentPage"
+            (pageChange)="onPageChange($event)">
+          </app-pagination>
         </div>
+        
     </div>
   </div>
 </div>
