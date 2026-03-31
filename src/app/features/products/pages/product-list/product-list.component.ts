@@ -21,6 +21,9 @@ export class ProductListComponent {
   limit = 10;
   loading = false;
   searchText = '';
+  sortBy = '';
+  order = '';
+  selectedSort = '';
 
   constructor(private productService: ProductService) {}
     
@@ -30,7 +33,7 @@ export class ProductListComponent {
     
       getProducts() {
         this.loading = true;
-        this.productService.getProducts(this.currentPage, this.limit).subscribe({
+        this.productService.getProducts(this.currentPage, this.limit, this.searchText, this.sortBy, this.order).subscribe({
           next: (res) => {
             this.products = res.products;
             this.total = res.total;
@@ -39,14 +42,30 @@ export class ProductListComponent {
           error: () => (this.loading = false)
         });
       }
-  
-        onPageChange(page: number) {
-        this.currentPage = page;
-        this.getProducts()
+
+      onPageChange(page: number) {
+      this.currentPage = page;
+      this.getProducts()
     }
   
 
     onSearch() {
-      console.log(this.searchText);
+    this.currentPage = 1; // reset pagination
+    this.getProducts();
     }
+
+    onSortChange(value: string) {
+    this.currentPage = 1;
+
+    const map: any = {
+      price_asc: { sortBy: 'price', order: 'asc' },
+      price_desc: { sortBy: 'price', order: 'desc' },
+      title_asc: { sortBy: 'title', order: 'asc' }
+    };
+
+    this.sortBy = map[value]?.sortBy || '';
+    this.order = map[value]?.order || '';
+
+    this.getProducts();
+  }
 }

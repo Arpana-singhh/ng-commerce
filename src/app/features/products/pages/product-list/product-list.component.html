@@ -2,9 +2,18 @@
   <div class="inner">
     <div class="ng-comm">
         <div class="product-filter-box">
-          <input [(ngModel)]="searchText"  placeholder="Search products..." />
+          <input [(ngModel)]="searchText"  (keyup.enter)="onSearch()" placeholder="Search products..." />
           <button (click)="onSearch()">Search</button>
+
+          <select [(ngModel)]="selectedSort" (ngModelChange)="onSortChange($event)">
+            <option value="">Sort By</option>
+            <option value="price_asc">Price: Low → High</option>
+            <option value="price_desc">Price: High → Low</option>
+            <option value="title_asc">Title: A → Z</option>
+          </select>
         </div>
+
+        
 
         <app-product-card 
           [products]="products" 
