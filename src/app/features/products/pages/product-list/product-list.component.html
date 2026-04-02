@@ -11,6 +11,13 @@
             <option value="price_desc">Price: High → Low</option>
             <option value="title_asc">Title: A → Z</option>
           </select>
+
+          <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+            <option value="">All Categories</option>
+            <option *ngFor="let cat of categories" [value]="cat">
+              {{ cat }}
+            </option>
+          </select>
         </div>
 
         

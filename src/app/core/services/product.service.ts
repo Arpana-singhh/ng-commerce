@@ -13,17 +13,6 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  // getProducts(page: number, limit: number, searchText?: string, sortBy?: string, order?: string): Observable<ProductsResponseModel> {
-  //   const skip = (page - 1) * limit;
-
-  //   const url = searchText
-  //     ? `${this.baseUrl}/products/search?q=${searchText}&limit=${limit}&skip=${skip}`
-  //     : `${this.baseUrl}/products?limit=${limit}&skip=${skip}`;
-
-  //   return this.http
-  //     .get<any>(url)
-  //     .pipe(map(res => ProductsResponseModel.fromApi(res)));
-  // }
     getProducts(page: number, limit: number, searchText?: string, sortBy?: string, order?: string): Observable<ProductsResponseModel> {
     const skip = (page - 1) * limit;
 
@@ -38,6 +27,16 @@ export class ProductService {
 
     return this.http
       .get<any>(url)
+      .pipe(map(res => ProductsResponseModel.fromApi(res)));
+  }
+
+  getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/products/category-list`);
+  }
+
+  getProductsByCategory(category: string): Observable<ProductsResponseModel> {
+    return this.http
+      .get<any>(`${this.baseUrl}/products/category/${category}`)
       .pipe(map(res => ProductsResponseModel.fromApi(res)));
   }
 }

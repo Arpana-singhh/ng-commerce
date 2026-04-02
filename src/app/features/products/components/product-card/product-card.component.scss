@@ -3,7 +3,6 @@
 
 .product-list {
   padding: 20px;
-  background: $bg-light;
 
   .product-card {
     background: $white;
@@ -17,6 +16,11 @@
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .p-image{
+      background-color: #F3F4F6;
+      width:100%;
     }
 
     .img-box {
@@ -57,6 +61,20 @@
 
         &:hover {
           background: $primary-dark;
+        }
+      }
+
+      .actions{
+        display:flex;
+        gap:10px;
+        justify-content:space-between;
+        margin-top:15px;
+        .add-btn{
+         flex-grow:1;
+        }
+        .delete-btn{
+          background: #FEF2F2;
+          color: #E7000B;
         }
       }
     }
