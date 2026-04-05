@@ -1,0 +1,260 @@
+@use '../../../../styles/mixins' as *;
+
+.add-wrapper {
+  background: $bg-light;
+  min-height: 100vh;
+  padding: 32px 0 64px;
+}
+
+.add-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Back Button
+.back-btn {
+  @include dispflex(inline-flex, flex-start, center);
+  @include transition(0.2s);
+  gap: 6px;
+  background: $white;
+  border: 1px solid $border-color;
+  color: $text-dark;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 24px;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+
+    svg {
+      stroke: $white;
+      transform: translateX(-2px);
+    }
+  }
+
+  svg {
+    @include transition(0.2s);
+  }
+}
+
+// Card
+.form-card {
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: 16px;
+  padding: 40px;
+
+  @include phone {
+    padding: 24px 16px;
+  }
+}
+
+.card-header {
+  @include dispflex(flex, flex-start, center);
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $border-color;
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #EEF2FF;
+  @include dispflex(flex, center, center);
+  flex-shrink: 0;
+
+  svg {
+    stroke: $primary;
+  }
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 0;
+}
+
+// Form Groups
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-dark;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+.required {
+  color: #DC2626;
+  margin-left: 2px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: $text-dark;
+  background: $white;
+  border: 1.5px solid $border-color;
+  border-radius: 8px;
+  outline: none;
+  @include transition(0.2s);
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #9CA3AF;
+  }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+
+  &.is-invalid {
+    border-color: #DC2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+  }
+
+  &.has-icon {
+    padding-left: 40px;
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+// Input with icon
+.input-with-icon {
+  position: relative;
+
+  .input-icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    stroke: #9CA3AF;
+    pointer-events: none;
+  }
+}
+
+// Two column row
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @include phone {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+// Error message
+.error-msg {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #DC2626;
+  @include dispflex(flex, flex-start, center);
+  gap: 4px;
+
+  &::before {
+    content: '⚠';
+    font-size: 11px;
+  }
+}
+
+// Actions
+.form-actions {
+  @include dispflex(flex, flex-start, center);
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid $border-color;
+
+  @include phone {
+    flex-direction: column;
+  }
+}
+
+.btn-primary {
+  @include dispflex(inline-flex, center, center);
+  @include transition(0.2s);
+  gap: 8px;
+  flex: 1;
+  background: $primary;
+  color: $white;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: $primary-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  @include phone {
+    width: 100%;
+  }
+}
+
+.btn-secondary {
+  @include transition(0.2s);
+  background: $white;
+  color: $text-dark;
+  border: 1.5px solid $border-color;
+  padding: 13px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: $bg-light;
+    border-color: #9CA3AF;
+  }
+
+  @include phone {
+    width: 100%;
+  }
+}
+
+// Loading spinner inside button
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: $white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -6,6 +6,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { ProductListComponent } from './features/products/pages/product-list/product-list.component';
 import { ProductDetailComponent } from './features/products/pages/product-detail/product-detail.component';
 import { LoginComponent } from './features/auth/pages/login/login.component';
+import { AddProductComponent } from './features/products/pages/add-product/add-product.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'product-list', pathMatch: 'full' },
       { path: 'product-list', component: ProductListComponent },
+      { path: 'product/add', component: AddProductComponent },
       { path: 'product/:id', component: ProductDetailComponent }
     ]
   },

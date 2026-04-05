@@ -16,6 +16,16 @@ export class ProductsResponseModel {
   }
 }
 
+export type ProductCreatePayload = {
+  title: string;
+  description: string;
+  price: number;
+  stock: number;
+  category: string;
+  brand?: string;
+  thumbnail: string;
+};
+
 export class ProductModel {
 
   id: number;
@@ -94,7 +104,41 @@ export class ProductModel {
   static fromApiList(list: any[] = []): ProductModel[] {
     return list.map(item => new ProductModel(item));
   }
+
+  static fromForm(raw: any): ProductModel {
+    return new ProductModel({
+      title: raw?.title ?? '',
+      description: raw?.description ?? '',
+      price: raw?.price != null ? Number(raw.price) : 0,
+      stock: raw?.stock != null ? Number(raw.stock) : 0,
+      category: raw?.category ?? '',
+      brand: raw?.brand ?? '',
+      thumbnail: raw?.thumbnail ?? ''
+    });
+  }
+
+  toForm(): ProductCreatePayload {
+    const payload: ProductCreatePayload = {
+      title: this.title,
+      description: this.description,
+      price: this.price,
+      stock: this.stock,
+      category: this.category,
+      thumbnail: this.thumbnail
+    };
+
+    if (this.brand) {
+      payload.brand = this.brand;
+    }
+
+    return payload;
+  }
+
+  toJson(): object {
+    return this.toForm();
+  }
 }
+
 
 /* Optional Interfaces (for typing clarity) */
 export interface Dimensions {

@@ -77,3 +77,26 @@
 }
 }
 
+button {
+  @include dispflex(flex, center, center);
+  background: $primary;
+  color: $white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  @include transition(0.2s);
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+.add-product-opt{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+    margin-top:20px;
+}

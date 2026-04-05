@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { ProductModel } from '../../../../shared/models/product.model';
 import { ProductService } from '../../../../core/services/product.service';
+import { RouterLink } from "@angular/router";
 
 
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, FormsModule, ProductCardComponent, PaginationComponent], // 👈 THIS FIXES EVERYTHING
+  imports: [CommonModule, FormsModule, ProductCardComponent, PaginationComponent, RouterLink], // 👈 THIS FIXES EVERYTHING
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })

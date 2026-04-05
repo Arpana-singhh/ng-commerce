@@ -1,5 +1,14 @@
 <div class="container">
   <div class="inner">
+    <div class="add-product-opt">
+      <div class="add-text">
+        <h3>Add Product</h3>
+        <p>Manage your product inventory</p>
+      </div>
+      <div class="add-btn">
+        <button [routerLink]="['/product/add']">Add Product</button>
+      </div>
+    </div>
     <div class="ng-comm">
         <div class="product-filter-box">
           <input [(ngModel)]="searchText"  (keyup.enter)="onSearch()" placeholder="Search products..." />
