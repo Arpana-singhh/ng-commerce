@@ -1,0 +1,450 @@
+@use '../../../../styles/mixins' as *;
+
+.detail-wrapper {
+  background: $bg-light;
+  min-height: 100vh;
+  padding: 32px 0 64px;
+}
+
+// Loading
+.loading-state {
+  @include dispflex(flex, center, center);
+  flex-direction: column;
+  gap: 16px;
+  padding: 80px 0;
+
+  p {
+    color: $text-light;
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $border-color;
+    border-top-color: $primary;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.detail-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Back Button
+.back-btn {
+  @include dispflex(inline-flex, flex-start, center);
+  @include transition(0.2s);
+  gap: 6px;
+  background: $white;
+  border: 1px solid $border-color;
+  color: $text-dark;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 24px;
+
+  svg {
+    @include transition(0.2s);
+  }
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+
+    svg {
+      transform: translateX(-2px);
+      stroke: $white;
+    }
+  }
+}
+
+// Main Card
+.detail-card {
+  background: $white;
+  border-radius: 16px;
+  border: 1px solid $border-color;
+  padding: 40px;
+  @include dispflex(flex, flex-start, flex-start);
+  gap: 48px;
+
+  @include tab {
+    flex-direction: column;
+    padding: 24px;
+    gap: 32px;
+  }
+
+  @include phone {
+    padding: 16px;
+  }
+}
+
+// Gallery
+.gallery-section {
+  flex: 0 0 420px;
+  max-width: 420px;
+
+  @include tab {
+    flex: unset;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.main-image-wrap {
+  position: relative;
+  background: $bg-light;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  @include dispflex(flex, center, center);
+  border: 1px solid $border-color;
+
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    @include transition(0.3s);
+  }
+
+  &:hover .main-image {
+    transform: scale(1.04);
+  }
+}
+
+.discount-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #FEE2E2;
+  color: #DC2626;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+.thumbnails {
+  @include dispflex(flex, flex-start, center);
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 2px solid $border-color;
+  overflow: hidden;
+  cursor: pointer;
+  @include transition(0.2s);
+  background: $bg-light;
+
+  img {
+    @include image-fill;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+  &.active,
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+// Info Section
+.info-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-tag {
+  display: inline-block;
+  background: #EEF2FF;
+  color: $primary;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  letter-spacing: 0.4px;
+  margin-bottom: 14px;
+}
+
+.product-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: $text-dark;
+  line-height: 1.3;
+  margin: 0 0 16px;
+
+  @include phone {
+    font-size: 20px;
+  }
+}
+
+// Stars
+.rating-row {
+  @include dispflex(flex, flex-start, center);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stars {
+  @include dispflex(flex, flex-start, center);
+  gap: 2px;
+}
+
+.star {
+  width: 18px;
+  height: 18px;
+  fill: $secondary;
+  stroke: none;
+
+  &.empty {
+    fill: $border-color;
+  }
+
+  &.sm {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.rating-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: $text-dark;
+}
+
+.review-count {
+  font-size: 13px;
+  color: $text-light;
+}
+
+// Price
+.price-row {
+  @include dispflex(flex, flex-start, center);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  color: $text-dark;
+}
+
+.discount-chip {
+  background: #FEE2E2;
+  color: #DC2626;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: $text-light;
+  margin-bottom: 28px;
+}
+
+// Meta Table
+.meta-table {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.meta-row {
+  @include dispflex(flex, space-between, center);
+  padding: 12px 16px;
+  border-bottom: 1px solid $border-color;
+  font-size: 14px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.meta-label {
+  color: $text-light;
+  font-weight: 500;
+}
+
+.meta-value {
+  color: $text-dark;
+  font-weight: 600;
+  text-align: right;
+
+  &.stock {
+    color: #16A34A;
+
+    &.low {
+      color: #DC2626;
+    }
+  }
+
+  &.sku {
+    font-family: monospace;
+    font-size: 13px;
+    color: $text-light;
+  }
+}
+
+// Actions
+.actions-row {
+  @include dispflex(flex, flex-start, center);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.qty-control {
+  @include dispflex(flex, flex-start, center);
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 44px;
+  background: $bg-light;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: $text-dark;
+  @include transition(0.15s);
+
+  &:hover:not(:disabled) {
+    background: $primary;
+    color: $white;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.qty-value {
+  min-width: 44px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: $text-dark;
+}
+
+.add-to-cart-btn {
+  @include dispflex(inline-flex, center, center);
+  @include transition(0.2s);
+  gap: 8px;
+  background: $primary;
+  color: $white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+
+  &:hover {
+    background: $primary-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Reviews
+.reviews-section {
+  margin-top: 40px;
+}
+
+.reviews-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $text-dark;
+  margin-bottom: 20px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.review-card {
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.review-header {
+  @include dispflex(flex, flex-start, center);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.reviewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: $primary;
+  color: $white;
+  @include dispflex(flex, center, center);
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.reviewer-info {
+  @include dispflex(flex, flex-start, flex-start);
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+}
+
+.reviewer-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: $text-dark;
+}
+
+.review-date {
+  font-size: 12px;
+  color: $text-light;
+}
+
+.review-stars {
+  @include dispflex(flex, flex-start, center);
+  gap: 2px;
+}
+
+.review-comment {
+  font-size: 13px;
+  color: $text-light;
+  line-height: 1.6;
+  margin: 0;
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ProductsResponseModel } from '../../shared/models/product.model';
+import { ProductDetailModel } from '../../shared/models/productdetail.model';
 
 
 @Injectable({
@@ -28,6 +29,12 @@ export class ProductService {
     return this.http
       .get<any>(url)
       .pipe(map(res => ProductsResponseModel.fromApi(res)));
+  }
+
+    getProductById(id: number): Observable<ProductDetailModel> {
+    return this.http
+      .get<any>(`${this.baseUrl}/products/${id}`)
+      .pipe(map(res => ProductDetailModel.fromApi(res)));
   }
 
   getCategories(): Observable<string[]> {

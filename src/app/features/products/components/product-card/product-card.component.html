@@ -1,43 +1,43 @@
-  <div class="product-list">
-    <div class="row">
+<div class="product-list">
+  <div class="row">
 
-      <div *ngIf="loading">Loading...</div>
+    <div *ngIf="loading">Loading...</div>
 
-      <div 
-        class="col-xl-3 col-lg-4 col-md-6 mb-4"
-        *ngFor="let product of products"
-      >
-        <div class="product-card">
+    <div 
+      class="col-xl-3 col-lg-4 col-md-6 mb-4"
+      *ngFor="let product of products"
+    >
+      <a class="product-card" [routerLink]="['/product', product.id]" style="cursor: pointer;">
 
-          <img 
-            [src]="product.thumbnail" 
-            class="img-fluid mb-2 p-image"
-          />
+        <img 
+          [src]="product.thumbnail" 
+          class="img-fluid mb-2 p-image"
+        />
 
-          <div class="content">
+        <div class="content">
 
-            <div class="top-row">
-              <span class="category">{{ product.category }}</span>
-              <span class="rating">⭐ {{ product.rating }}</span>
+          <div class="top-row">
+            <span class="category">{{ product.category }}</span>
+            <span class="rating">⭐ {{ product.rating }}</span>
+          </div>
+
+          <h5>{{ product.title }}</h5>
+
+          <div class="bottom-row">
+            <span class="price">₹ {{ product.price }}</span>
+
+            <div class="actions">
+              <button class="add-btn" (click)="$event.stopPropagation()">Add to Cart</button>
+              <button class="delete-btn" (click)="$event.stopPropagation()">
+                <img src="images/delete-icon.png" alt="delete" />
+              </button>
             </div>
-
-            <h5>{{ product.title }}</h5>
-
-            <div class="bottom-row">
-              <span class="price">₹ {{ product.price }}</span>
-
-              <div class="actions">
-                <button class="add-btn">Add to Cart</button>
-                <button class="delete-btn"><img src="images/delete-icon.png" alt="delete" /></button>
-              </div>
-            </div>
-
           </div>
 
         </div>
-      </div>
 
+      </a>
     </div>
+
   </div>
-  <div>
-  </div>
+</div>
